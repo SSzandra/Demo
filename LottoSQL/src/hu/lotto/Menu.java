@@ -1,0 +1,25 @@
+package hu.lotto;
+
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
+public class Menu {
+
+	public static void main(String[] args) {
+		Resource resource = new ClassPathResource("applicationContext.xml");
+		BeanFactory factory = new XmlBeanFactory(resource);
+
+		Sorsol sorsol=(Sorsol)factory.getBean("sorsolbean");
+		sorsol.proc();
+		
+		Kivalaszt kivalaszt=(Kivalaszt)factory.getBean("kivalasztbean");
+		kivalaszt.proc();
+		
+		Kiir kiir=(Kiir)factory.getBean("kiirbean");
+		kiir.proc();
+
+	}
+
+}
